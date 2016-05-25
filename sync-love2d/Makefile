@@ -12,7 +12,8 @@ clean:
 	rm -rf ./$(PUBDIR)/*
 
 $(PUBDIR)/%: %
-	mkdir -p $(@D); cp $< $@
+	@mkdir -p $(@D)
+	cp $< $@
 
 $(LOVEGAME): $(EVERTHINGOUT)
 	cd $(PUBDIR) && zip -9 -q -r ../$(LOVEGAME) .

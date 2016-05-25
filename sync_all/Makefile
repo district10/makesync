@@ -11,4 +11,5 @@ clean:
 	rm -rf publish/*
 
 $(PUBDIR)/%: %
-	mkdir -p $(@D); cp $< $@
+	@mkdir -p $(@D)
+	cp $< $@

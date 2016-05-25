@@ -15,13 +15,15 @@ clean:
 	rm -rf publish/*
 
 $(PUBDIR)/%.md: %.md
-	mkdir -p $(@D); cp $< $@
+	@mkdir -p $(@D); cp $< $@
 $(PUBDIR)/%.html: $(PUBDIR)/%.md
 	pandoc $< -o $@
 $(PUBDIR)/$(STATICSDIR)/%.js: $(STATICSDIR)/%.js
-	mkdir -p $(@D); cp $< $@
+	@mkdir -p $(@D)
+	cp $< $@
 $(PUBDIR)/$(STATICSDIR)/%.css: $(STATICSDIR)/%.css
-	mkdir -p $(@D); cp $< $@
+	@mkdir -p $(@D)
+	cp $< $@
 $(PUBDIR)/index.html: $(HTMLS)
 	(echo '---';find publish -name '*.html';echo '...') | sed -e "s/$(PUBDIR)\//  - /" > $(PUBDIR)/sitemap.html && \
 	cp $(PUBDIR)/sitemap.html $@
